@@ -26,8 +26,8 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const [totalAmout,setTotalAmount,] = useState(0);
-  const [ShippingCharges,setShippingCharges,] = useState(0);
+  const [totalAmout, setTotalAmount,] = useState(0);
+  const [ShippingCharges, setShippingCharges,] = useState(0);
 
   useEffect(() => {
     let temp = 0;
@@ -152,7 +152,7 @@ function Cart() {
   return (
     <Layout>
       <div
-        className="h-screen bg-gray-100 pt-5 mb-[60%] "
+        className="h-auto bg-gray-200 pt-5   "
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
           color: mode === "dark" ? "white" : "",

@@ -5,6 +5,7 @@ import Layout from "../../components/layout/Layout";
 import myContext from "../../context/data/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
+import Cart from "../cart/Cart";
 
 function Allproducts() {
   const context = useContext(myContext);
@@ -23,8 +24,14 @@ function Allproducts() {
   const cartItems = useSelector((state) => state.cart);
   console.log(cartItems);
 
+
+
   const addCart = (product) => {
     dispatch(addToCart(product));
+    toast.success("add to cart");
+  };
+  const Card = (product) => {
+    dispatch(Cart(product));
     toast.success("add to cart");
   };
 
@@ -59,9 +66,10 @@ function Allproducts() {
                 const { title, price, description, imageUrl, id } = item;
                 return (
                   <div
-                    onClick={() =>
-                      (window.location.href = `/productinfo/${id}`)
-                    }
+                    // `/productinfo/${id}`
+                    // onClick={() =>
+                    //   (window.location.href = `/productinfo/${id}`)
+                    // }
                     key={index}
                     className="p-4 md:w-1/4  drop-shadow-lg "
                   >
@@ -76,13 +84,16 @@ function Allproducts() {
                         <img
                           className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out"
                           src={imageUrl}
-                          alt="Image"
+                          alt="Image" onClick={() =>
+                            (window.location.href = `/productInfo/${id}`)
+                          }
                         />
                       </div>
                       <div className="p-5 border-t-2">
                         <h2
                           className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
                           style={{ color: mode === "dark" ? "white" : "" }}
+                         
                         >
                           Comfyti
                         </h2>
@@ -103,9 +114,20 @@ function Allproducts() {
                           <button
                             type="button"
                             onClick={() => addCart(item)}
-                            className="focus:outline-none text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
+                            className="focus:outline-none text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full mb-2 py-2"
                           >
                             Add To Cart
+                          </button>
+                        </div>
+                        <div className=" flex justify-center ">
+                          <button
+                            type="button"
+                            onClick={() => addCart
+                              (item, window.location.href = `/Cart`)
+                            }
+                            className="w-full  bg-orange-600 py-2 text-center rounded-lg text-white font-bold "
+                          >
+                            Buy Now
                           </button>
                         </div>
                       </div>
@@ -113,6 +135,18 @@ function Allproducts() {
                   </div>
                 );
               })}
+            {/* <Modal  /> */}
+            {/* <Modal
+              name={name}
+              address={address}
+              pincode={pincode}
+              phoneNumber={phoneNumber}
+              setName={setName}
+              setAddress={setAddress}
+              setPincode={setPincode}
+              setPhoneNumber={setPhoneNumber}
+              buyNow={buyNow}
+            /> */}
           </div>
         </div>
       </section>
