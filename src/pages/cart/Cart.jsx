@@ -28,26 +28,31 @@ function Cart() {
 
   const [totalAmout, setTotalAmount,] = useState(0);
   const [ShippingCharges, setShippingCharges,] = useState(0);
+  const [GrandTotal, setGrandTotal,] = useState(0);
 
   useEffect(() => {
     let temp = 0;
     let temp1 = 0
+    let temp2 = 0
     cartItems.forEach((cartItem) => {
       temp = temp + parseInt(cartItem.price);
       temp1 = temp1 + parseInt(cartItem.shipping);
+      temp2 = temp2 + parseInt(cartItem.grandTotal);
     });
     setTotalAmount(temp);
     setShippingCharges(temp1)
+    setGrandTotal(temp2)
 
     console.log(temp);
     console.log(temp1);
 
+
   }, [cartItems]);
 
-  // console.log(cartItems.shipping)
-  const shipping = parseInt(100);
+  var shipping = ShippingCharges;
+  var grandTotal = shipping + totalAmout;
 
-  const grandTotal = shipping + totalAmout;
+  // console.log(cartItems.shipping)
 
   // console.log(grandTotal)
 
@@ -81,9 +86,10 @@ function Cart() {
       phoneNumber,
       cartItems,
       shipping,
+      grandTotal,
       amount: parseInt(grandTotal),
       currency: "pkr",
-      order_receipt: "order_receipt_" + name,
+      order_receipt: "order_receipt_" + name, 
       // email: JSON.parse(localStorage.getItem("user")).user.email,
       // userid: JSON.parse(localStorage.getItem("user")).user.uid,
       date: new Date().toLocaleString("en-US", {
@@ -162,7 +168,7 @@ function Cart() {
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
           <div className="rounded-lg md:w-2/3 ">
             {cartItems.map((item, index) => {
-              const { title, price, description, imageUrl } = item;
+              const { title, price, grandTotal, description, imageUrl } = item;
               return (
                 <div
                   className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6  sm:flex  sm:justify-start"
@@ -190,6 +196,12 @@ function Cart() {
                       >
                         {description}
                       </h2>
+                      <p
+                        className="mt-1 text-xs font-semibold text-gray-700"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Rs. {price}
+                      </p>
                       <p
                         className="mt-1 text-xs font-semibold text-gray-700"
                         style={{ color: mode === "dark" ? "white" : "" }}

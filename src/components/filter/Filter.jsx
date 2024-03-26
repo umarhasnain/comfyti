@@ -1,5 +1,18 @@
+
+
 import React, { useContext } from 'react'
 import myContext from '../../context/data/myContext'
+
+
+
+const products = [
+    { id: 1, name: 'Product 1', category: 'Women Clothes', price: 3000 },
+    { id: 2, name: 'Product 2', category: 'Clothing', price: 1500 },
+    { id: 3, name: 'Product 3', category: 'Slick', price: 2500 },
+    { id: 4, name: 'Product 4', category: 'Books', price: 9000 },
+    { id: 5, name: 'Product 5', category: 'Girl Top', price: 6000 },
+    // Add more products as needed
+];
 
 function Filter() {
     const context = useContext(myContext)
@@ -37,20 +50,37 @@ function Filter() {
                             Reset Filter
                         </button>
                     </div>
+                    <div className='flex gap-60'>
+                        <div>
+                            <p className="font-medium">
+                                Category
+                            </p>
+                        </div>
+                        <div><p className="font-medium">
+                            Price
+                        </p></div>
+                    </div>
                     <div>
                         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                            <select value={filterType} onChange={(e)=> setFilterType(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
+                            <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
 
-                                {product.map((item, index) => {
+                                {products.map((products, index) => {
                                     return (
-                                        <option value={item.category}>{item.category}</option>
+                                        <option value={products.category}>{products.category}</option>
                                     )
                                 })}
                             </select>
-                            <select value={filterPrice} onChange={(e)=>setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
-                                {product.map((item, index) => {
+                            <select value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
+                                {product.map((products, index) => {
                                     return (
-                                        <option value={item.price}>{item.price}</option>
+                                        <option value={products.price}>{products.price}</option>
+                                    )
+                                })}
+                            </select>
+                            <select value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }}>
+                                {product.map((product) => {
+                                    return (
+                                        <option value={product.shipping}>{product.shipping}</option>
                                     )
                                 })}
                             </select>
@@ -64,3 +94,52 @@ function Filter() {
 }
 
 export default Filter
+
+// import React, { useState } from 'react';
+
+// const products = [
+//   { id: 1, name: 'Product 1', category: 'Electronics', price: 3000 },
+//   { id: 2, name: 'Product 2', category: 'Clothing', price: 1500 },
+//   { id: 3, name: 'Product 3', category: 'Electronics', price: 2500 },
+//   { id: 4, name: 'Product 4', category: 'Books', price: 9000 },
+//   // Add more products as needed
+// ];
+
+// function Filter() {
+//   const [categoryFilter, setCategoryFilter] = useState('');
+//   const [priceFilter, setPriceFilter] = useState('');
+
+//   const filteredProducts = products.filter((product) =>
+//     product.category.toLowerCase().includes(categoryFilter.toLowerCase()) &&
+//     (priceFilter === '' || product.price <= parseFloat(priceFilter))
+//   );
+
+//   return (
+//     <div className="App">
+//       <h1>Product List</h1>
+//       <div className="filters">
+//         <input
+//           type="text"
+//           placeholder="Filter by category"
+//           value={categoryFilter}
+//           onChange={(e) => setCategoryFilter(e.target.value)}
+//         />
+//         <input
+//           type="number"
+//           placeholder="Filter by max price"
+//           value={priceFilter}
+//           onChange={(e) => setPriceFilter(e.target.value)}
+//         />
+//       </div>
+//       <ul>
+//         {filteredProducts.map((product) => (
+//           <li key={product.id}>
+//             {product.name} - ${product.price}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default Filter;

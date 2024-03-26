@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 function HeroSection() {
   return (
@@ -9,3 +9,4 @@ function HeroSection() {
 }
 
 export default HeroSection
+

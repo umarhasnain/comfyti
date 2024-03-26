@@ -6,7 +6,7 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { fireDB , storage} from '../../../fireabase/FirebaseConfig';
+import { fireDB, storage } from '../../../fireabase/FirebaseConfig';
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
 
 
@@ -234,9 +234,9 @@ function DashboardTab() {
               </div>
             </TabPanel>
             <TabPanel>
-              
+
               {/* <Order order={order} setOrder={setOrder} setLoading={setLoading} /> */}
-              
+
               <div className="relative overflow-x-auto mb-16">
                 <h1
                   className=" text-center mb-5 text-3xl font-semibold underline"
@@ -244,7 +244,7 @@ function DashboardTab() {
                 >
                   Order Details
                 </h1>
-                
+
 
                 {order.map((allorder) => {
                   return (
@@ -259,7 +259,7 @@ function DashboardTab() {
                       >
                         <tr>
                           <th scope="col" className="px-6 py-3">
-                            Payment Id
+                            Total Payment
                           </th>
                           <th scope="col" className="px-6 py-3">
                             Image
@@ -269,6 +269,9 @@ function DashboardTab() {
                           </th>
                           <th scope="col" className="px-6 py-3">
                             Price
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Shipping
                           </th>
                           <th scope="col" className="px-6 py-3">
                             Category
@@ -302,6 +305,9 @@ function DashboardTab() {
                           category,
                           imageUrl,
                           price,
+                          shipping,
+                          grandTotal,
+                          amount,
                           name,
                           address,
                           pincode,
@@ -325,7 +331,7 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                {}
+                                {allorder.grandTotal}
                               </td>
                               <th
                                 scope="row"
@@ -352,6 +358,14 @@ function DashboardTab() {
                                 }}
                               >
                                 Rs. {price}
+                              </td>
+                              <td
+                                className="px-6 py-4 text-black "
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                Rs. {shipping}
                               </td>
                               <td
                                 className="px-6 py-4 text-black "
@@ -414,13 +428,13 @@ function DashboardTab() {
                           </tbody>
                         );
                       })}
-                  
+
                     </table>
                   );
                 })}
               </div>
             </TabPanel>
-          
+
 
             <TabPanel>
               {/* <User addressInfo={addressInfo} setAddressInfo={setAddressInfo} setLoading={setLoading} /> */}

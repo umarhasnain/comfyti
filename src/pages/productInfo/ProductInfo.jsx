@@ -7,6 +7,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
 import { fireDB } from '../../fireabase/FirebaseConfig';
+import App from '../../components/carousel/carousel'
+import { Carousel } from 'antd';
 
 function ProductInfo() {
     const context = useContext(myContext);
@@ -53,26 +55,130 @@ function ProductInfo() {
     }, [cartItems])
 
 
+    const contentStyle = {
+        height: '460px',
+        width: '400px',
+        marginTop: '30px',
+        color: '#fff',
+        float: 'left',
+        lineHeight: '260px',
+        textAlign: 'center',
+        background: '#364d79',
+
+    };
+    const App = () => (
+        <Carousel autoplay className='flex-col w-96 '>
+
+            <div >
+                <h3 style={contentStyle}>
+                    <img
+                        alt="Comfyti"
+                        className="lg:w-1/1 w-full lg:h-auto  object-cover object-center rounded"
+                        src={products.imageUrl}
+                    />
+
+                </h3>
+            </div>
+
+            <div>
+                <h3 style={contentStyle}>  <img
+                    alt="Comfyti"
+                    className="lg:w-1/1 w-full lg:h-auto  object-cover object-center rounded"
+                    src={products.imageUrl_1}
+                /></h3>
+            </div>
+            <div>
+                <h3 style={contentStyle}>
+                    <img
+                        alt="Comfyti"
+                        className="lg:w-1/1 w-full lg:h-auto  object-cover object-center rounded"
+                        src={products.imageUrl}
+                    />
+                </h3>
+            </div>
+            <div>
+                <h3 style={contentStyle}>
+                    <img
+                        alt="Comfyti"
+                        className="lg:w-1/1 w-full lg:h-auto  object-cover object-center rounded"
+                        src={products.imageUrl}
+                    />
+                </h3>
+            </div>
+
+        </Carousel>
+    );
 
 
     return (
         <Layout>
+            {/* <div >
+                <div >
+                    <App />
+                </div>
+            </div> */}
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-10 mx-auto">
                     {products &&
-                        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                            <img
+                        <div className="lg:w-4/5 mx-auto flex flex-wrap gap-10">
+
+                            {/* <img
                                 alt="ecommerce"
-                                className="lg:w-1/3 w-full lg:h-auto  object-cover object-center rounded"
+                                className="lg:w-1/3 w-full lg:h-auto  object-cover  rounded"
                                 src={products.imageUrl}
-                            />
+                            /> */}
+                            <div className="flex-col" >
+                                <App />
+
+
+
+                            </div>
+
+
+
+
+
                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                                    BRAND NAME
+                                    Comfyti
                                 </h2>
-                                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                                    {products.title}
+                                <h1 className="flex gap-30 text-gray-900 text-3xl title-font font-medium mb-1">
+                                    {products.title} <span className='pl-4'></span>
                                 </h1>
+                                <h2 className="title-font ml-0  text-orange-500 font-medium text-2xl text-gray-900">
+                                    Rs: {products.price}.00 PKR
+                                </h2>
+
+                                <div className='flex gap-2 flex-wrap'>
+                                    <div>
+                                        <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                                            <input type="radio" name="option" value="Option 1" />
+                                            S / M
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                                            <input type="radio" name="option" value="Option 2" />
+                                            L
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                                            <input type="radio" name="option" value="Option 3" />
+                                            XL
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">
+                                        <input class="group relative w-40 pl-2 h-10 gap-2 mt-4 mb-4 text-xl flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-white-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-white text-white-900 shadow-sm"
+                                            type="number" name="option" placeholder='Quantity' />
+                                    </label>
+
+                                </div>
+
                                 <div className="flex mb-4">
                                     <span className="flex items-center">
                                         <svg
@@ -171,39 +277,49 @@ function ProductInfo() {
                                         </a>
                                     </span>
                                 </div>
-                                <p className="leading-relaxed border-b-2 mb-5 pb-5">
-                                    {products.description}
-                                </p>
 
-                                <div className="flex">
-                                    <span className="title-font font-medium text-2xl text-gray-900">
-                                        Rs: {products.price}
-                                    </span>
-                                    <button onClick={() => addCart(products)} className="flex ml-auto text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded">
+                                <div className=" flex justify-center">
+                                    <button className="w-full  bg-orange-600 py-2 text-center rounded-lg text-white font-bold h-12 mb-4"
+                                        onClick={() => addCart(products)}>
                                         Add To Cart
                                     </button>
-
-                                    <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                                        <svg
-                                            fill="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            className="w-5 h-5"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                                        </svg>
-                                    </button>
-                                
                                 </div>
+                                <div className=" flex justify-center ">
+                                    <button className="w-full  bg-orange-600 py-2 text-center rounded-lg text-white font-bold h-12 mb-8"
+                                        onClick={() => addCart(products, window.location.href = `/Cart`)} >
+                                        Buy Now
+                                    </button>
+                                </div>
+
+
+
+
+
+
+
+
+                                <div className=''>
+                                    <h3 className='text-2xl mb-2 font-bold'>Discription</h3>
+                                    <p className="leading-relaxed border-b-2 mb-5 pb-5">
+                                        {products.description}
+                                    </p></div>
+
+
                             </div>
+
                         </div>}
                 </div>
             </section>
 
-        </Layout>
+
+
+
+
+
+
+        </Layout >
     )
+
 }
 
 export default ProductInfo

@@ -27,15 +27,15 @@ function Order() {
                               <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                 <div className="mt-5 sm:mt-0">
                                   <h2 className="text-lg font-bold text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{item.title}</h2>
-                                  <h2 className="text-lg font-bold text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Price: "+item.price}</h2>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Category: "+item.description}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Name: "+ order.name}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Adress: "+ order.address}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Email: "+ order.email}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Pincode: "+ order.pincode}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Date: "+ order.date}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Phone Number: "+ order.phoneNumber}</p>
-                                  
+                                  <h2 className="text-lg font-bold text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Price: " + item.price}</h2>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Category: " + item.description}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Name: " + order.name}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Adress: " + order.address}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Email: " + order.email}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Pincode: " + order.pincode}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Date: " + order.date}</p>
+                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{"Phone Number: " + order.phoneNumber}</p>
+
                                 </div>
                               </div>
                             </div>

@@ -45,6 +45,7 @@ function Signup() {
         } catch (error) {
             console.log(error)
             setLoading(false)
+            toast.error("Email is Already in use")
         }
     }
 
