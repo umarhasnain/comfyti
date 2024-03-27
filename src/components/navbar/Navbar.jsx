@@ -115,9 +115,9 @@ function Navbar() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-orange-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
+        <p className="flex h-10 items-center justify-center bg-orange-600 px-4 text-lg font-medium text-white sm:px-6 lg:px-8"
           style={{ backgroundColor: mode === 'dark' ? '#f64d22' : '', color: mode === 'dark' ? 'white' : '', }}>
-          Get free delivery on orders over 10,000
+          03331115361
         </p>
 
         <nav aria-label="Top" className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl " style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>

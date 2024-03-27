@@ -7,16 +7,21 @@ import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
 import { fireDB } from '../../fireabase/FirebaseConfig';
-import App from '../../components/carousel/carousel'
+import RadioButtonExample from '../../components/carousel/carousel'
 import { Carousel } from 'antd';
 
 function ProductInfo() {
     const context = useContext(myContext);
     const { loading, setLoading } = context;
 
+    const [selectedOption, setSelectedOption] = useState('');
     const [products, setProducts] = useState('')
     const params = useParams()
     // console.log(products.title)
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     const getProductData = async () => {
         setLoading(true)
@@ -53,6 +58,11 @@ function ProductInfo() {
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems])
+
+
+
+
+
 
 
     const contentStyle = {
@@ -112,22 +122,14 @@ function ProductInfo() {
 
     return (
         <Layout>
-            {/* <div >
-                <div >
-                    <App />
-                </div>
-            </div> */}
+
             <section className="text-gray-600 body-font overflow-hidden">
-                <div className="container px-5 py-10 mx-auto">
+                <div className="container px-3 py-10 mx-auto">
                     {products &&
                         <div className="lg:w-4/5 mx-auto flex flex-wrap gap-10">
 
-                            {/* <img
-                                alt="ecommerce"
-                                className="lg:w-1/3 w-full lg:h-auto  object-cover  rounded"
-                                src={products.imageUrl}
-                            /> */}
-                            <div className="flex-col" >
+
+                            <div className="" >
                                 <App />
 
 
@@ -147,9 +149,13 @@ function ProductInfo() {
                                 </h1>
                                 <h2 className="title-font ml-0  text-orange-500 font-medium text-2xl text-gray-900">
                                     Rs: {products.price}.00 PKR
-                                </h2>
+                                </h2> 
+                                <div>
+                                    <RadioButtonExample />
 
-                                <div className='flex gap-2 flex-wrap'>
+                                </div>
+
+                                {/* <div className='flex gap-2 flex-wrap'>
                                     <div>
                                         <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
                                             <input type="radio" name="option" value="Option 1" />
@@ -169,7 +175,7 @@ function ProductInfo() {
                                             XL
                                         </label>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div>
                                     <label htmlFor="">

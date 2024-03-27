@@ -7,7 +7,10 @@ import { deleteFromCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../fireabase/FirebaseConfig";
+import RadioButtonExample from '../../components/carousel/carousel'
 
+
+ 
 function Cart() {
   const context = useContext(myContext);
   const { mode } = context;
@@ -52,6 +55,7 @@ function Cart() {
   var shipping = ShippingCharges;
   var grandTotal = shipping + totalAmout;
 
+
   // console.log(cartItems.shipping)
 
   // console.log(grandTotal)
@@ -64,6 +68,14 @@ function Cart() {
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [selectedSize, setSelectedOption] = useState('');
+
+  // Function to handle radio button change
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
 
   const buyNow = async () => {
     if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
@@ -79,7 +91,10 @@ function Cart() {
       });
     }
 
+
+
     const addressInfo = {
+      selectedSize,
       name,
       address,
       pincode,
@@ -89,7 +104,7 @@ function Cart() {
       grandTotal,
       amount: parseInt(grandTotal),
       currency: "pkr",
-      order_receipt: "order_receipt_" + name, 
+      order_receipt: "order_receipt_" + name,
       // email: JSON.parse(localStorage.getItem("user")).user.email,
       // userid: JSON.parse(localStorage.getItem("user")).user.uid,
       date: new Date().toLocaleString("en-US", {
@@ -155,7 +170,11 @@ function Cart() {
 
 
   };
+
+
   return (
+
+
     <Layout>
       <div
         className="h-auto bg-gray-200 pt-5   "
@@ -169,7 +188,10 @@ function Cart() {
           <div className="rounded-lg md:w-2/3 ">
             {cartItems.map((item, index) => {
               const { title, price, grandTotal, description, imageUrl } = item;
+
+
               return (
+
                 <div
                   className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6  sm:flex  sm:justify-start"
                   style={{
@@ -202,12 +224,9 @@ function Cart() {
                       >
                         Rs. {price}
                       </p>
-                      <p
-                        className="mt-1 text-xs font-semibold text-gray-700"
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Rs. {price}
-                      </p>
+                    <div>  <RadioButtonExample/>
+                    </div>
+
                     </div>
                     <div
                       onClick={() => deleteCart(item)}
@@ -269,6 +288,9 @@ function Cart() {
                 Rs. {ShippingCharges}
               </p>
             </div>
+
+
+
 
             <div className="flex justify-between">
               <p

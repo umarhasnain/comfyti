@@ -1,36 +1,52 @@
-import React from 'react';
-import { Carousel } from 'antd';
-const contentStyle = {
-    height: '260px',
-    width: '800px',
-    marginLeft: '100px',
-    marginTop: '50px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-};
-const App = () => (
-    <Carousel autoplay>
-        <div>
-            <h3 style={contentStyle}>
-                <img
-                    alt="ecommerce"
-                    className="lg:w-1/3 w-full lg:h-auto  object-cover object-center rounded"
-                    src={products.imageUrl}
-                />
+import React, { useState } from 'react';
 
-            </h3>
+function RadioButtonExample() {
+    // State variable to hold the selected radio button value
+    const [selectedOption, setSelectedOption] = useState('');
+
+    // Function to handle radio button change
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+
+    return (
+        <div className='flex gap-2 flex-wrap'>
+            <div> <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                <input
+                    type="radio"
+                    value="S / M"
+                    checked={selectedOption === 'S / M'}
+                    onChange={handleOptionChange}
+                />
+                S / M
+            </label></div>
+            <div><label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                <input
+                    type="radio"
+                    value="L"
+                    checked={selectedOption === 'L'}
+                    onChange={handleOptionChange}
+                />
+                L
+            </label>
+            </div>
+            <div>
+                <label class="group relative w-24 h-10 gap-2 mt-4 mb-4 flex items-center justify-center rounded-xl border py-1 px-1 text-lr bg-white-200 font-medium uppercase hover:bg-orange-400 focus:outline-none sm:flex-1 sm:py-5 cursor-pointer bg-orange text-orange-900 shadow-sm">
+                    <input
+
+                        type="radio"
+                        value="XL"
+                        checked={selectedOption === 'XL'}
+                        onChange={handleOptionChange}
+                    />
+                    Xl
+                </label>
+            </div>
+
+            {/* Display the selected option */}
+            {/* <p>Selected Option: {selectedOption}</p> */}
         </div>
-        <div>
-            <h3 style={contentStyle}>2</h3>
-        </div>
-        <div>
-            <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-            <h3 style={contentStyle}>4</h3>
-        </div>
-    </Carousel>
-);
-export default App;
+    );
+}
+
+export default RadioButtonExample;

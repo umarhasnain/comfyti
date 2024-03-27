@@ -277,6 +277,9 @@ function DashboardTab() {
                             Category
                           </th>
                           <th scope="col" className="px-6 py-3">
+                            Size
+                          </th>
+                          <th scope="col" className="px-6 py-3">
                             Name
                           </th>
                           <th scope="col" className="px-6 py-3">
@@ -301,6 +304,7 @@ function DashboardTab() {
                         console.log(allorder.cartItems)
                         const {
                           title,
+                          selectedSize,
                           description,
                           category,
                           imageUrl,
@@ -374,6 +378,14 @@ function DashboardTab() {
                                 }}
                               >
                                 {category}
+                              </td>
+                              <td
+                                className="px-6 py-4 text-black "
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                {allorder.selectedSize}
                               </td>
 
                               <td
